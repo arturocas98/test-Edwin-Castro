@@ -5,8 +5,9 @@ interface Props {
   tasks: Task[];
   onEdit: (task: Task) => void;
   onDelete: (task: Task) => void;
-  onStatusChange: (task: Task, status: Task["status"]) => void;
+  onStatusChange: (taskId: string, status: Task["status"]) => void;
 }
+
 
 export default function TaskList({
   tasks,
@@ -26,7 +27,7 @@ export default function TaskList({
           task={task}
           onEdit={() => onEdit(task)}
           onDelete={() => onDelete(task)}
-          onStatusChange={(status) => onStatusChange(task, status)}
+          onStatusChange={(status) => onStatusChange(task._id, status)}
         />
       ))}
     </div>

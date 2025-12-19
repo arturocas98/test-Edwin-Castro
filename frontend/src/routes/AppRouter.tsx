@@ -5,6 +5,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import ProjectDetailPage from "../pages/project/ProjectDetailPage";
 import type { JSX } from "react";
 import AppLayoutRouter from "./AppLayoutRouter";
+import ProjectsPage from "../pages/project/ProjectsPage";
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
   const { user, loading } = useAuth();
@@ -16,10 +17,9 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 export default function AppRouter() {
   return (
     <Routes>
-      {/* Public */}
-      <Route path="/login" element={<Login />} />
 
-      {/* Private with layout */}
+      <Route path="/login" element={<Login />} />
+   
       <Route
         element={
           <PrivateRoute>
@@ -27,6 +27,7 @@ export default function AppRouter() {
           </PrivateRoute>
         }>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
       </Route>
     </Routes>

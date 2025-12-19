@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTasksByProject, updateTask, deleteTask, createTask } from "../../api/tasks.api";
 import type { Task } from "../../types/task";
-import DashboardLayout from "../../components/layout/DashboardLayout";
 import TaskList from "../../components/tasks/TaskList";
 import TaskModal from "../../components/tasks/TaskModal";
 import TaskFilters from "../../components/tasks/TaskFilters";
@@ -62,10 +61,17 @@ export default function ProjectDetailPage() {
       .finally(() => setLoading(false));
   }, [projectId]);
 
-  const handleStatusChange = async (task: Task, status: Task["status"]) => {
-    const updated = await updateTask(task._id, { status });
-    setTasks((prev) => prev.map((t) => (t._id === updated._id ? updated : t)));
+  const handleStatusChange = async (taskId: string, status: Task["status"]) => {
+    setTasks((prev) =>
+      prev.map((t) => (t._id === taskId ? { ...t, status } : t))
+    );
+    try {
+      await updateTask(taskId, { status });
+    } catch (error) {
+      console.error(error);
+    }
   };
+
 
   const handleDelete = async (task: Task) => {
     await deleteTask(task._id);
@@ -75,7 +81,7 @@ export default function ProjectDetailPage() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <DashboardLayout>
+    <div>
       <h2 className="text-2xl font-bold mb-6">Project Tasks</h2>
 
       <div className="flex justify-between items-center mb-4">
@@ -121,6 +127,6 @@ export default function ProjectDetailPage() {
         onClose={() => setEditingTask(null)}
         onSubmit={handleUpdate}
       />
-    </DashboardLayout>
+    </div>
   );
 }

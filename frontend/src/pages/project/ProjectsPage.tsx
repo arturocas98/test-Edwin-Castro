@@ -1,9 +1,8 @@
 import ProjectList from "../../components/projects/ProjectList";
-import DashboardLayout from "../../components/layout/DashboardLayout";
 
 export default function ProjectsPage() {
   return (
-    <DashboardLayout>
+    <div>
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Projects</h2>
 
@@ -13,6 +12,6 @@ export default function ProjectsPage() {
       </div>
 
       <ProjectList />
-    </DashboardLayout>
+    </div>
   );
 }

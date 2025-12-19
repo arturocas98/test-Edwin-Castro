@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { Project } from "../types/project";
+import type { PaginatedResponse } from "../types/api";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -8,10 +9,10 @@ const authHeaders = () => ({
 });
 
 export const getProjects = async (): Promise<Project[]> => {
-  const { data } = await axios.get(`${API_URL}/projects`, {
+  const { data } = await axios.get<PaginatedResponse<Project>>(`${API_URL}/projects`, {
     headers: authHeaders(),
   });
-  return data;
+  return data.data;
 };
 
 export const createProject = async (
