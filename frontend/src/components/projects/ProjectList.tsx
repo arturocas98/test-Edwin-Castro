@@ -5,7 +5,11 @@ import ProjectCard from "./ProjectCard";
 import EditProjectModal from "./EditProjectModal";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 
-export default function ProjectList() {
+interface Props {
+  onProjectCreated?: (project: Project) => void;
+}
+
+export default function ProjectList({ onProjectCreated }: Props) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [editing, setEditing] = useState<Project | null>(null);
   const [deleting, setDeleting] = useState<Project | null>(null);
@@ -13,6 +17,16 @@ export default function ProjectList() {
   useEffect(() => {
     getProjects().then(setProjects);
   }, []);
+
+  const handleProjectCreated = (newProject: Project) => {
+    // Actualizar la lista de proyectos
+    setProjects((prev) => [newProject, ...prev]);
+
+    // Si existe el callback, ejecutarlo
+    if (onProjectCreated) {
+      onProjectCreated(newProject);
+    }
+  };
 
   const handleUpdated = (updated: Project) => {
     setProjects((prev) =>

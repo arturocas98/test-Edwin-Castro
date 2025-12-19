@@ -5,7 +5,7 @@ interface Props {
   title: string;
   status: Task["status"];
   tasks: Task[];
-  onDropTask: (taskId: string, status: Task["status"]) => void;
+  onDropTask: (taskId: string, status: Task["status"], position: number) => void;
 }
 
 const statusColors: Record<Task["status"], string> = {
@@ -20,12 +20,15 @@ export default function KanbanColumn({
   tasks,
   onDropTask,
 }: Props) {
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    const taskId = e.dataTransfer.getData("taskId");
-    if (!taskId) return;
 
-    onDropTask(taskId, status);
+
+  const handleDrop = (e: React.DragEvent) => {
+    const taskId = e.dataTransfer.getData("taskId");
+
+    const newPosition =
+      tasks.length === 0 ? 0 : Math.max(...tasks.map((t) => t.position)) + 1;
+
+    onDropTask(taskId, status, newPosition);
   };
 
   return (

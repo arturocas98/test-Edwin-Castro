@@ -9,18 +9,22 @@ const TaskSchema = new Schema(
     description: String,
     status: {
       type: String,
-      enum: ["pendiente", "en progreso", "completada"],
-      default: "pendiente",
+      enum: ["pending", "in_progress", "completed"],
+      default: "pending",
     },
     priority: {
       type: String,
-      enum: ["baja", "media", "alta"],
-      default: "media",
+      enum: ["low", "medium", "high"],
+      default: "medium",
     },
     project: {
       type: Schema.Types.ObjectId,
       ref: "Project",
       required: true,
+    },
+    position: {
+      type: Number,
+      default: 0,
     },
     assignedTo: {
       type: Schema.Types.ObjectId,

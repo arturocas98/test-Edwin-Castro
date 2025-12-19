@@ -3,7 +3,7 @@ import KanbanColumn from "./KanbanColumn";
 
 interface Props {
   tasks: Task[];
-  onStatusChange: (taskId: string, status: Task["status"]) => void;
+  onStatusChange: (taskId: string, status: Task["status"], position: number) => void;
 }
 
 export default function KanbanBoard({ tasks, onStatusChange }: Props) {
@@ -12,21 +12,27 @@ export default function KanbanBoard({ tasks, onStatusChange }: Props) {
       <KanbanColumn
         title="Pending"
         status="pending"
-        tasks={tasks.filter((t) => t.status === "pending")}
+        tasks={tasks
+          .filter((t) => t.status === "pending")
+          .sort((a, b) => a.position - b.position)}
         onDropTask={onStatusChange}
       />
 
       <KanbanColumn
         title="In Progress"
         status="in_progress"
-        tasks={tasks.filter((t) => t.status === "in_progress")}
+        tasks={tasks
+          .filter((t) => t.status === "in_progress")
+          .sort((a, b) => a.position - b.position)}
         onDropTask={onStatusChange}
       />
 
       <KanbanColumn
         title="Completed"
         status="completed"
-        tasks={tasks.filter((t) => t.status === "completed")}
+        tasks={tasks
+          .filter((t) => t.status === "completed")
+          .sort((a, b) => a.position - b.position)}
         onDropTask={onStatusChange}
       />
     </div>

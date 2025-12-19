@@ -10,4 +10,5 @@ export interface Task {
   project: string;
   assignedTo?: string;
   createdAt: string;
+  position: number;
 }

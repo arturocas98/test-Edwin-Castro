@@ -8,18 +8,17 @@ const authHeaders = () => ({
 });
 
 export const getTasksByProject = async (projectId: string): Promise<Task[]> => {
-  const { data } = await axios.get(`${API_URL}/projects/${projectId}/tasks`, {
+  const { data } = await axios.get(`${API_URL}/tasks?project=${projectId}`, {
     headers: authHeaders(),
   });
   return data;
 };
 
 export const createTask = async (
-  projectId: string,
   payload: Partial<Task>
 ): Promise<Task> => {
   const { data } = await axios.post(
-    `${API_URL}/projects/${projectId}/tasks`,
+    `${API_URL}/tasks`,
     payload,
     { headers: authHeaders() }
   );

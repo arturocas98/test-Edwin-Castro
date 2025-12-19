@@ -26,7 +26,6 @@ export const createTask = async (req: AuthRequest, res: Response) => {
 export const getTasks = async (req: AuthRequest, res: Response) => {
   const { status, priority, project, assignedTo, sortBy, order } = req.query;
 
-  // Proyectos donde el usuario tiene acceso
   const userProjects = await Project.find({
     $or: [{ owner: req.user.id }, { collaborators: req.user.id }],
   }).select("_id");

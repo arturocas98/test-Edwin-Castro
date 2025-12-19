@@ -8,7 +8,11 @@ export default function KanbanCard({ task }: Props) {
   return (
     <div
       draggable
-      data-task-id={task._id}
+      onDragStart={(e) => {
+        e.dataTransfer.setData("taskId", task._id);
+        e.dataTransfer.setData("fromStatus", task.status);
+        e.dataTransfer.setData("fromPosition", String(task.position));
+      }}
       className="bg-white rounded shadow p-3 cursor-move hover:shadow-md transition">
       <h4 className="font-semibold text-sm">{task.title}</h4>
 
