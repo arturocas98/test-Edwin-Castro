@@ -281,7 +281,7 @@ Si tuviera más tiempo, implementaría:
 Lista de recursos que consultaste durante el desarrollo:
 
 - Documentación oficial de TailWindCSS
-- Artículo sobre arquitectura limpia para un proyecto de Gestión de 
+- Artículo sobre arquitectura limpia para un proyecto de Gestión de tareas
 - Stack Overflow thread sobre el rendimiento de base de datos no relacional vs relacional en una aplicación para gestionar tareas y proyectos.
 
 ---
