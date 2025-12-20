@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
-  password: z.string().min(3, "Minimum 3 characters"),
+  password: z.string().min(6, "Minimum 6 characters"),
 });
 
 type LoginForm = z.infer<typeof schema>;

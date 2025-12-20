@@ -128,16 +128,40 @@ Protección contra XSS, validación de ownership en proyectos y tareas, y manejo
 
 **Razón**: Porque Tailwind tiene mejor documentación que otras herramientas y con la experiencia que tengo con TailWindCSS es mejor en el Responsive debido a que se enfocan en el Mobile-first ayudando a que se vea excelente en diferentes pantallas aparte que Tailwind no necesita dependencias de librerias pesadas lo que ayuda en el rendimiento de la App.
 
-### Patrones de Diseño
+# 📐 Patrones de Diseño
 
-- **Responsive Design**: [¿Cómo lo abordaste? Mobile-first?]
-- **Loading States**: [¿Cómo manejaste los estados de carga?]
-- **Error Handling**: [¿Cómo muestras errores al usuario?]
-- **Feedback Visual**: [Toasts, modales, etc.]
+## Responsive Design
 
-### Decisiones de UX
+El frontend fue desarrollado utilizando **Tailwind CSS**, aplicando un enfoque **mobile-first** desde el inicio.
 
-[Explica algunas decisiones importantes de experiencia de usuario que tomaste]
+- Layouts basados en **Flexbox** y contenedores fluidos
+- Uso de breakpoints responsivos (`max-w-md`, `min-h-screen`, etc.)
+- Interfaces adaptadas tanto para:
+  - 📱 Dispositivos móviles
+  - 💻 Escritorio
+- Evita tamaños fijos, garantizando adaptabilidad a distintas resoluciones
+
+**Decisión clave:** priorizar mobile-first porque muchos usuarios acceden desde celular y el dashboard debe ser usable incluso en pantallas pequeñas.
+
+---
+
+## Loading States
+
+Los estados de carga se manejan con **React Hook Form** y el estado de autenticación:
+
+- Uso de `isSubmitting` para:
+  - Deshabilitar botones
+  - Cambiar el texto del botón (`Creating...`, `Signing in...`)
+- Previene:
+  - Envíos múltiples
+  - Confusión del usuario sobre el estado de la acción
+
+Ejemplo:
+```tsx
+<button disabled={isSubmitting}>
+  {isSubmitting ? "Signing in..." : "Login"}
+</button>
+
 
 ---
 
@@ -275,16 +299,16 @@ Mejor manejo de arquitectura fullstack y mejorar mis decisiones técnicas al pro
 [Opcional: Agrega capturas de pantalla de tu aplicación]
 
 ### Login
-![Login](./screenshots/login.png)
+![Login](https://drive.google.com/file/d/1sZPMuuRZEs8B5GsjdZnro5SnwCOYPY_A/view)
 
 ### Dashboard
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](https://drive.google.com/file/d/1woXJQ_Jy1la_T3GevEeITZatJH3TcZMg/view)
 
 ### Lista de Proyectos
-![Projects](./screenshots/projects.png)
+![Projects](https://drive.google.com/file/d/1zAkvUlEL0w8w482A0d3V3M6r65XDDmvM/view)
 
 ### Detalle de Tareas
-![Tasks](./screenshots/tasks.png)
+![Tasks](https://drive.google.com/file/d/1cXOKSwGBabwBoTp2_nKpsBFzzlCwAhhj/view)
 
 ---
 
