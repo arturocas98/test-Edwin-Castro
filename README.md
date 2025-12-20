@@ -203,7 +203,7 @@ Si tienes dudas sobre los requisitos, no dudes en contactarnos.
 
 ## Instalación
 ```bash
-# Tus comandos
+# npm install
 ```
 
 ## Configuración
