@@ -196,34 +196,36 @@ Si tienes dudas sobre los requisitos, no dudes en contactarnos.
 
 # 📖 Instrucciones de Ejecución
 
-> **Nota**: Completa esta sección con las instrucciones para ejecutar tu proyecto.
-
 ## Prerrequisitos
-[Tus prerrequisitos]
+
+Antes de ejecutar el proyecto asegúrate de tener instalado:
+
+- Node.js >= 18
+- npm o yarn
+- MongoDB (local o MongoDB Atlas)
+- Git
+
+---
 
 ## Instalación
-```bash
-# npm install
-```
 
-## Configuración
-```bash
-# Variables de entorno
-```
+Instalar dependencias tanto en backend como en frontend:
 
+```bash
+# Backend
+cd backend
+npm install
+
+# Frontend
+cd frontend
+npm install
+
+```
 ## Ejecución
 ```bash
 # Backend
+npm run dev
+
 # Frontend
+npm run dev
 ```
-
-## Tests
-```bash
-# Comandos de tests
-```
-
-## API Documentation
-- Swagger: [Tu URL]
-
-## Credenciales de Prueba
-[Si aplica]
