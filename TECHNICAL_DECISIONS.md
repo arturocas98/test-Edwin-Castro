@@ -7,7 +7,7 @@
 - **Nombre del Candidato**: Edwin Arturo Castro Villamar
 - **Fecha de Inicio**: [16/12/2025]
 - **Fecha de Entrega**: [19/12/2025]
-- **Tiempo Dedicado**: [24 horas]
+- **Tiempo Dedicado**: [36 horas]
 
 ---
 
@@ -27,7 +27,7 @@
 
 | Tecnología | Versión | Razón de Elección |
 |------------|---------|-------------------|
-| React | 18.x | [Razón] |
+| React | 19.2 | React  es una buena herramienta para desarrollo web ya que brinda HRM y buen control de estados y interfaces fluidas |
 | Build Tool | Vite | Use Vite por el arranque rápido,HMR eficiente y solo requiere configuración mínima para empezar |
 | Estado Global | Context | Use Contextt API porque lo considero suficiente para el alcance del proyecto sin añadir complejidad innecesaria |
 | Estilos | TailwindCSS | Use TailWindCSS porque es rápido para el maquetado y consistente sin dependencias de liberías pesadas de UI |
