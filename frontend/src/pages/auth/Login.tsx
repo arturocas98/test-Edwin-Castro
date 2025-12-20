@@ -3,7 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "../../api/axios";
 import { useAuth } from "../../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
@@ -15,6 +15,9 @@ type LoginForm = z.infer<typeof schema>;
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const successMessage = location.state?.success;
+
 
   const {
     register,
@@ -36,6 +39,12 @@ export default function Login() {
         <h1 className="text-2xl font-semibold mb-6 text-center">
           Project Manager
         </h1>
+
+        {successMessage && (
+          <div className="mb-4 rounded bg-green-900/40 border border-green-700 text-green-300 px-4 py-2 text-sm">
+            {successMessage}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email */}

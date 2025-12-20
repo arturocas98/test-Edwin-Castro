@@ -4,7 +4,6 @@ import User from "../users/user.model";
 import { AuthRequest } from "../../middlewares/auth.middleware";
 import { isProjectOwner, userHasAccessToProject } from "./project.permissions";
 
-// 🔹 Crear proyecto
 export const createProject = async (req: AuthRequest, res: Response) => {
   const project = await Project.create({
     name: req.body.name,
@@ -15,7 +14,6 @@ export const createProject = async (req: AuthRequest, res: Response) => {
   res.status(201).json(project);
 };
 
-// 🔹 Listar proyectos (paginado + búsqueda)
 export const getProjects = async (req: AuthRequest, res: Response) => {
   const { page = 1, limit = 10, search } = req.query;
 
@@ -46,7 +44,6 @@ export const getProjects = async (req: AuthRequest, res: Response) => {
   });
 };
 
-// 🔹 Obtener proyecto por ID
 export const getProjectById = async (req: AuthRequest, res: Response) => {
   const project = await userHasAccessToProject(req.params.id, req.user.id);
 
@@ -56,7 +53,6 @@ export const getProjectById = async (req: AuthRequest, res: Response) => {
   res.json(project);
 };
 
-// 🔹 Actualizar proyecto (solo owner)
 export const updateProject = async (req: AuthRequest, res: Response) => {
   const project = await isProjectOwner(req.params.id, req.user.id);
 
@@ -69,7 +65,6 @@ export const updateProject = async (req: AuthRequest, res: Response) => {
   res.json(project);
 };
 
-// 🔹 Eliminar proyecto (solo owner)
 export const deleteProject = async (req: AuthRequest, res: Response) => {
   const project = await isProjectOwner(req.params.id, req.user.id);
 
@@ -80,7 +75,6 @@ export const deleteProject = async (req: AuthRequest, res: Response) => {
   res.json({ message: "Project deleted" });
 };
 
-// 🔹 Añadir colaborador
 export const addCollaborator = async (req: AuthRequest, res: Response) => {
   const { userId } = req.body;
 
@@ -102,7 +96,6 @@ export const addCollaborator = async (req: AuthRequest, res: Response) => {
   res.json(project);
 };
 
-// 🔹 Remover colaborador
 export const removeCollaborator = async (req: AuthRequest, res: Response) => {
   const project = await isProjectOwner(req.params.id, req.user.id);
   if (!project)

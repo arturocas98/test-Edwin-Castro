@@ -25,7 +25,11 @@ export default function Register() {
 
   const onSubmit = async (values: RegisterForm) => {    
     await api.post("/auth/register", values);
-    navigate("/login");
+    navigate("/login", {
+    state: {
+        success: "Account created successfully. You can now log in.",
+    },
+    });
   };
 
   return (

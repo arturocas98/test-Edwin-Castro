@@ -22,7 +22,6 @@
 | Base de Datos | MongoDB | Porque se pueden crear modelos flexibles basado en documentos, ideal para proyectos colaborativos y relaciones dinámicas |
 | ORM/ODM | Mongoose | Porque facilita el modelado de esquemas, validaciones y relaciones en MongoDB. |
 | Validación | Zod | Use Zod por el tipado fuerte, reutilizable entre backend y frontend y excelente integración con TypeScript |
-| Testing | Jest | Use Jest por la configuración sencilla y buena integración con Node.js |
 
 ### Frontend
 
@@ -207,28 +206,6 @@ Implementación nativa sin librerías externas
 **Aprendizaje:**
 Mayor control del DOM y eventos
 
-### Desafío 2: [Nombre del desafío]
-
-**Problema:**
-[Descripción]
-
-**Solución:**
-[Tu solución]
-
-**Aprendizaje:**
-[Qué aprendiste]
-
-### Desafío 3: [Nombre del desafío]
-
-**Problema:**
-[Descripción]
-
-**Solución:**
-[Tu solución]
-
-**Aprendizaje:**
-[Qué aprendiste]
-
 ---
 
 ## 🎯 Trade-offs
@@ -244,17 +221,7 @@ Mayor control del DOM y eventos
 **Razón:**
 Menor complejidad para el alcance del proyecto
 
-### Trade-off 2: [Decisión]
 
-**Opciones consideradas:**
-- [...]
-
-**Elegí**: [...]
-
-**Razón:**
-[...]
-
----
 
 ## 🔮 Mejoras Futuras
 
