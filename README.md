@@ -229,3 +229,6 @@ npm run dev
 # Frontend
 npm run dev
 ```
+
+## API Documentation
+- Swagger: http://localhost:4000/api/docs
