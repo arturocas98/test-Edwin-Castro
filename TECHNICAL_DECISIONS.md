@@ -67,6 +67,7 @@ frontend/
 ├── src/
 │ ├── api/ # Axios y servicios
 │ ├── components/ # Componentes reutilizables
+│ ├── constants/ # Constantes utilizadas en el proyecto
 │ ├── layouts/ # Layout autenticado y público
 │ ├── pages/ # Login, Projects, Dashboard
 │ ├── routes/ # Rutas protegidas

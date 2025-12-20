@@ -6,6 +6,7 @@ import ProjectDetailPage from "../pages/project/ProjectDetailPage";
 import type { JSX } from "react";
 import AppLayoutRouter from "./AppLayoutRouter";
 import ProjectsPage from "../pages/project/ProjectsPage";
+import Register from "../pages/auth/Register";
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
   const { user, loading } = useAuth();
@@ -17,9 +18,8 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 export default function AppRouter() {
   return (
     <Routes>
-
       <Route path="/login" element={<Login />} />
-   
+      <Route path="/register" element={<Register />} />
       <Route
         element={
           <PrivateRoute>

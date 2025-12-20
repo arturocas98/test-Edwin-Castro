@@ -1,8 +1,10 @@
+import type { User } from "./user";
+
 export interface Project {
   _id: string;
   name: string;
   description?: string;
-  owner: string;
-  collaborators: string[];
+  owner: User | string;
+  collaborators: User[];
   createdAt: string;
 }

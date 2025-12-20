@@ -7,9 +7,7 @@ export default function ProjectsPage() {
   const [showCreateModal, setShowCreateModal] = useState(false);
 
   const handleProjectCreated = (newProject: Project) => {
-    setShowCreateModal(false);
-    console.log(newProject);
-    
+    setShowCreateModal(false);  
   };
 
   return (

@@ -41,7 +41,14 @@ export const getTasks = async (req: AuthRequest, res: Response) => {
 
   const tasks = await Task.find(filters)
     .populate("assignedTo", "name email")
-    .populate("project", "name")
+    .populate({
+      path: "project",
+      select: "name collaborators", 
+      populate: {
+        path: "collaborators",
+        select: "name email",
+      },
+    })
     .sort({ [(sortBy as string) || "createdAt"]: order === "desc" ? -1 : 1 });
 
   res.json(tasks);

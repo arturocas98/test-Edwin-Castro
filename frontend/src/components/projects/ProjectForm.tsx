@@ -1,9 +1,10 @@
 import { useState } from "react";
 import type { Project } from "../../types/project";
+import UserSelector from "../users/UserSelector";
 
 interface Props {
   initialData?: Partial<Project>;
-  onSubmit: (data: { name: string; description?: string }) => Promise<void>;
+  onSubmit: (data: { name: string; description?: string, collaborators: string[] }) => Promise<void>;
   submitText: string;
 }
 
@@ -15,6 +16,9 @@ export default function ProjectForm({
   const [name, setName] = useState(initialData?.name ?? "");
   const [description, setDescription] = useState(
     initialData?.description ?? ""
+  );
+  const [collaborators, setCollaborators] = useState<string[]>(
+    initialData?.collaborators ?? []
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -29,7 +33,7 @@ export default function ProjectForm({
 
     try {
       setLoading(true);
-      await onSubmit({ name, description });
+      await onSubmit({ name, description , collaborators });
     } catch {
       setError("Something went wrong");
     } finally {
@@ -56,6 +60,47 @@ export default function ProjectForm({
           onChange={(e) => setDescription(e.target.value)}
         />
       </div>
+
+      <div>
+        <UserSelector
+          selectedUsers={collaborators}
+          onUsersChange={setCollaborators}
+          excludeCurrentUser={true}
+          placeholder="Search team members to add as collaborators..."
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          Collaborators will have access to view and edit this project.
+        </p>
+      </div>
+
+      {collaborators.length > 0 && (
+        <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="flex items-start">
+            <svg
+              className="w-5 h-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <div>
+              <p className="text-sm text-blue-800 font-medium">
+                {collaborators.length} collaborator
+                {collaborators.length !== 1 ? "s" : ""} selected
+              </p>
+              <p className="text-xs text-blue-600 mt-1">
+                These users will be able to view all tasks and contribute to the
+                project.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {error && <p className="text-sm text-red-600">{error}</p>}
 
